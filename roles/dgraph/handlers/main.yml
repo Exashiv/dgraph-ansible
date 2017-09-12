@@ -1,0 +1,3 @@
+---
+- name: restart dgraph
+  service: name=dgraph state=restarted enabled=yes
