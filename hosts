@@ -1,2 +1,14 @@
-[local]
-localhost
+[dgraph_servers]
+dgraph1 localhost1:3000
+dgraph2 localhost2:3000
+dgraph3 localhost3:3000
+dgraph4 localhost4:3000
+dgraph5 localhost5:3000
+
+[dgraph_client_master]
+dgraph1
+
+[dgraph_client_group_1]
+dgraph2
+dgraph3
+dgraph4
