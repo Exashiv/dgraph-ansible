@@ -1,0 +1,17 @@
+description "Dgraph Server"
+author "essa.permana@tokopedia.com"
+env DATADIR="/var/lib/dgraph"
+env LOGDIR="/var/log/dgraph"
+env DGRAPH="/usr/local/bin/dgraph"
+start on (net-device-up
+                                        and local-filesystems
+                                        and runlevel [2345])
+stop on runlevel [016]
+respawn
+respawn limit 5 60
+limit nofile 4096 4096
+console log
+script
+        chdir $DATADIR
+        exec $DGRAPH --config $DATADIR/config.yaml
+end script

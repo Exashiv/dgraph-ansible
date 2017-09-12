@@ -1,0 +1,40 @@
+# Folder in which to store export.
+export: {{ store_export }}
+
+# Fraction of dirty posting lists to commit every few seconds.
+gentlecommit: {{ gentlecommit }} 
+
+# RAFT ID that this server will use to join RAFT groups.
+idx: {{ raft }}
+
+# Groups to be served by this instance.
+groups: {{ group_instance }}
+
+# Port to run server on. (default 8080)
+port: {{ port }}
+
+grpc_port: {{ grpc_port }}
+
+# Port used by worker for internal communication.
+workerport: {{ workerport }}
+
+# If RAM usage exceeds this, we stop the world, and flush our buffers.
+memory_mb: {{ memory }}
+
+# The ratio of queries to trace.
+trace: {{ trace }}
+
+# Directory to store posting lists.
+p: p
+
+# Directory to store raft write-ahead logs.
+w: w
+
+# Debug mode for testing.
+debugmode: {{ debug }}
+
+bindall: {{ bindall }}
+
+#my: "172.32.4.115:8080"
+
+#peer: "10.164.4.78:8080"

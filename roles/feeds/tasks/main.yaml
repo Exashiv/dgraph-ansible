@@ -1,0 +1,21 @@
+---
+- name: Install Dgraph
+  shell: curl https://get.dgraph.io -sSf | bash
+  
+
+- name: Setup Dgraph Service
+  template: src=serviceworker.j2 dest=/etc/init/dgraph.conf
+
+- name: Setup Dgraph symlink Service
+  file: path=/etc/init/dgraph.conf
+        src=/etc/init.d/dgraph
+        state=link
+        force=yes
+
+- name: Setup Config YAML Dgraph
+  template: src=config.yml.j2 dest=/var/lib/dgraph/config.yml
+  notify: restart dgraph
+  
+
+- name: Start Dgraph Service
+  service: name=dgraph state=started enabled=yes
