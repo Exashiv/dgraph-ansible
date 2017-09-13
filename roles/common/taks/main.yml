@@ -1,10 +1,15 @@
 ---
 - name: Install Dgraph
   shell: curl https://get.dgraph.io -sSf | bash
-  
+
+- name: Create Directory init
+  file: path=/etc/init state=directory  
 
 - name: Setup Dgraph Service
   template: src=serviceworker.j2 dest=/etc/init/dgraph.conf
+
+- name: Create Directory init.d
+  file: path=/etc/init.d state=directory 
 
 - name: Setup Dgraph symlink Service
   file: path=/etc/init/dgraph.conf
@@ -18,4 +23,4 @@
   
 
 - name: Start Dgraph Service
-  service: name=dgraph state=started enabled=yes
+  service: name=dgraph state=started enabled=yes 

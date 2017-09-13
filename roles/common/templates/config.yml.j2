@@ -5,10 +5,10 @@ export: {{ store_export }}
 gentlecommit: {{ gentlecommit }} 
 
 # RAFT ID that this server will use to join RAFT groups.
-idx: {{ raft }}
+idx: {{ raft_id }}
 
 # Groups to be served by this instance.
-groups: {{ group_instance }}
+groups: "{{ my_group }}"
 
 # Port to run server on. (default 8080)
 port: {{ port }}
@@ -35,7 +35,9 @@ debugmode: {{ debug }}
 
 bindall: {{ bindall }}
 
-#my: "172.32.4.115:8080"
+my: "{{ my_ip }}"
 
-#peer: "10.164.4.78:8080"
+{% if my_ip != my_peer %}
+peer: "{{ my_peer }}"
+{% endif %}
 

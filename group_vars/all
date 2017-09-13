@@ -1,8 +1,6 @@
 ---
 store_export: export
 gentlecommit: 0.33
-raft: 1
-group_instance: "0,1"
 port: 8080
 grpc_port: 9090
 workerport: 12345

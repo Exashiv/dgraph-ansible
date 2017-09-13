@@ -1,0 +1,5 @@
+---
+raft_id: 4
+my_ip: 127.0.0.1
+my_peer: 127.0.0.1
+my_groups: 2,4,3,5
