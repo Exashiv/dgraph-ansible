@@ -41,4 +41,4 @@
   template: src=config.yml.j2 dest=/var/lib/dgraph/config.yml
 
 - name: Start Dgraph Service
-  command: /usr/local/bin/dgraph start 
+  command: start dgraph
