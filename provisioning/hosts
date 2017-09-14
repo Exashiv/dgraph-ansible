@@ -1,0 +1,3 @@
+[dgraph_servers]
+node1 localhost1:3000
+node2 localhost2:3000

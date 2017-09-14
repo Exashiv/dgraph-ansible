@@ -1,6 +1,0 @@
-[dgraph_servers]
-node1 localhost1:3000
-node2 localhost2:3000
-node3 localhost3:3000
-node4 localhost4:3000
-node5 localhost5:3000
