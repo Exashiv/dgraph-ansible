@@ -1,15 +1,35 @@
 ---
+
 - name: Install Dgraph
   shell: curl https://get.dgraph.io -sSf | bash
+
+- stat: path=/usr/local/bin
+  register: p
+- debug:
+    msg: "Path is exist"
+  when: p.stat.isdir is defined
+
 
 - name: Create Directory init
   file: path=/etc/init state=directory  
 
+- stat: path=/etc/init
+  register: p
+- debug:
+    msg: "Path is exist"
+  when: p.stat.isdir is defined
+
 - name: Setup Dgraph Service
   template: src=serviceworker.j2 dest=/etc/init/dgraph.conf
 
-- name: Create Directory init.d
-  file: path=/etc/init.d state=directory 
+- name: Create Directory var/lib/dgraph
+  file: path=/var/lib/dgraph state=directory 
+
+- stat: path=/var/lib/dgraph
+  register: p
+- debug:
+    msg: "Path is exist"
+  when: p.stat.isdir is defined
 
 - name: Setup Dgraph symlink Service
   file: path=/etc/init/dgraph.conf
@@ -19,8 +39,6 @@
 
 - name: Setup Config YAML Dgraph
   template: src=config.yml.j2 dest=/var/lib/dgraph/config.yml
-  notify: restart dgraph
-  
 
 - name: Start Dgraph Service
-  service: name=dgraph state=started enabled=yes 
+  command: /usr/local/bin/dgraph start 

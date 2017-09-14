@@ -1,0 +1,3 @@
+---
+- name: Start Dgraph Service init
+  shell: name=dgraph state=started enabled=yes 
