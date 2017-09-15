@@ -1,2 +1,6 @@
 [all]
-node1   ansible_connection=local    ansible_host=localhost
+node1   ansible_connection=ssh    ansible_host=server.ip.host
+node2   ansible_connection=ssh    ansible_host=server.ip.host
+node3   ansible_connection=ssh    ansible_host=server.ip.host
+node4   ansible_connection=ssh    ansible_host=server.ip.host
+node5   ansible_connection=ssh    ansible_host=server.ip.host

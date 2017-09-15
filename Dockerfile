@@ -20,7 +20,7 @@ ADD ansible /srv/example/
 WORKDIR /srv/example
 
 # Run Ansible to configure the Docker image
-RUN ansible-playbook -i hosts site.yml
+RUN ansible-playbook -i hosts_test site.yml
 
 # Other Dockerfile directives are still valid
 EXPOSE 22 3000 80
