@@ -40,5 +40,8 @@
 - name: Setup Config YAML Dgraph
   template: src=config.yml.j2 dest=/var/lib/dgraph/config.yml
 
+- name: Setup Group Config Dgraph
+  template: src=group.conf.j2 dest=/var/lib/dgraph/group.conf
+
 - name: Start Dgraph Service
   command: start dgraph
