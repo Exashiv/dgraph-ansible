@@ -16,7 +16,7 @@ grpc_port: {{ grpc_port }}
 workerport: {{ workerport }}
 
 # If RAM usage exceeds this, we stop the world, and flush our buffers.
-memory_mb: {{ memory }}
+memory_mb: {{ (ansible_memtotal_mb*0.5)|int|abs }}
 
 # The ratio of queries to trace.
 trace: {{ trace }}
