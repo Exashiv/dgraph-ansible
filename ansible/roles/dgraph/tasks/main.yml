@@ -1,0 +1,29 @@
+---
+
+- name: Install Dgraph
+  shell: curl https://get.dgraph.io -sSf | bash
+
+- name: Setup Dgraph Service
+  template: src=dgraph.j2 dest=/etc/init/dgraph.conf
+
+- name: Setup Dgraphzero Service
+  template: src=dgraphzero.j2 dest=/etc/init/dgraphzero.conf
+
+- name: Create Directory var/lib/dgraph
+  file: path=/var/lib/dgraph state=directory 
+
+- stat: path=/var/lib/dgraph
+  register: p
+- debug:
+    msg: "Path is exist"
+  when: p.stat.isdir is defined
+
+- name: Setup Config YAML Dgraph
+  template: src=config.yml.j2 dest=/var/lib/dgraph/config.yml
+
+- name: Start Dgraphzero Service
+  command: start dgraphzero
+  when: is_zero
+
+- name: Start Dgraph Service
+  command: start dgraph

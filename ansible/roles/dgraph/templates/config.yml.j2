@@ -7,9 +7,6 @@ gentlecommit: {{ gentlecommit }}
 # RAFT ID that this server will use to join RAFT groups.
 idx: {{ raft_id }}
 
-# Groups to be served by this instance.
-groups: "{{ my_groups }}"
-
 # Port to run server on. (default 8080)
 port: {{ port }}
 
@@ -35,9 +32,10 @@ debugmode: {{ debug }}
 
 bindall: {{ bindall }}
 
-my: "{{ my_ip }}"
-
-{% if my_ip != my_peer %}
+# Address of dgraphzero
 peer: "{{ my_peer }}"
-{% endif %}
+
+# Others should access me at 
+my: "{{ my_ip }}:8888"
+
 

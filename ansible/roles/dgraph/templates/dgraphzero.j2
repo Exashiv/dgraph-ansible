@@ -1,0 +1,25 @@
+description "Dgraphzero for Dgraph cluster"
+author "author@author.com"
+env DATADIR="/var/lib/dgraph"
+env DGRAPHZERO="/usr/local/bin/dgraphzero"
+start on (net-device-up
+                                        and local-filesystems
+                                        and runlevel [2345])
+stop on runlevel [016]
+respawn
+respawn limit 5 60
+limit nofile 4096 4096
+console log
+script
+        chdir $DATADIR
+
+        {% if my_ip == my_peer %}
+        
+        exec $DGRAPHZERO -replicas 3 -w wz --bindall=true --my "{{my_ip}}"
+        
+        {% else %}
+        
+        exec $DGRAPHZERO -replicas 3 -w wz --bindall=true --peer "{{my_peer}}"
+
+        {% endif %}
+end script

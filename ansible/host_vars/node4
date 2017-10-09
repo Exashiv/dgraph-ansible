@@ -1,5 +1,5 @@
 ---
 raft_id: 4
-my_ip: "{{ hostvars['node4']['ansible_host'] }}:8080"
-my_peer: "{{ hostvars['node1']['ansible_host'] }}:8080"
-my_groups: 2,4,3,5
+my_ip: "{{ hostvars['node4']['ansible_host'] }}"
+my_peer: "{{ hostvars['node1']['ansible_host'] }}"
+is_zero: false

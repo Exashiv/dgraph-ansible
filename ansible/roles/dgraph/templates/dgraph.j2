@@ -13,5 +13,5 @@ limit nofile 4096 4096
 console log
 script
         chdir $DATADIR
-        exec $DGRAPH --group_conf $DATADIR/group.conf --config $DATADIR/config.yaml
+        exec $DGRAPH --config $DATADIR/config.yaml
 end script
