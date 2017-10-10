@@ -19,7 +19,7 @@ script
         
         {% else %}
         
-        exec $DGRAPHZERO -replicas 3 -w wz --peer "{{my_peer}} --bindall=true -idx {{ raft_id }}"
+        exec $DGRAPHZERO -replicas 3 -w wz --peer "{{my_peer}}" --bindall=true -idx {{ raft_id }}
 
         {% endif %}
 end script
